@@ -5,7 +5,12 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header ("Input Settings")] 
-    public InputAction mouseAction;
+    public InputAction primaryMouseAction;
+    public InputAction secondaryMouseAction;
+    public InputAction enterDrawMode;
+
+    [Header ("Gameplay Mode")]
+    public bool drawMode;
 
     private NavMeshAgent agent;
     private Vector2 tapPoint;
@@ -21,12 +26,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!drawMode)
+        {
+            PointControl();
+        }
+
+        if (enterDrawMode.WasPressedThisFrame() && !drawMode)
+        {
+            drawMode = true;
+        }
+        else if (enterDrawMode.WasPressedThisFrame() && drawMode)
+        {
+            drawMode = false;
+        }
+    }
+
+    private void PointControl()
+    {
         tapPoint = Pointer.current.position.ReadValue();
-        Debug.Log(tapPoint);
 
         RaycastHit hitInfo;
 
-        if (mouseAction.WasPressedThisFrame())
+        if (primaryMouseAction.WasPressedThisFrame())
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(tapPoint), out hitInfo))
             {
@@ -37,7 +58,9 @@ public class PlayerController : MonoBehaviour
 
     public void EnableCharacterControl()
     {
-        mouseAction.Enable();
+        primaryMouseAction.Enable();
+        secondaryMouseAction.Enable();
+        enterDrawMode.Enable();
     }
 
 }
