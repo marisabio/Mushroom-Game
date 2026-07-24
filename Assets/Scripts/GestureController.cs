@@ -7,11 +7,9 @@ namespace PDollarGestureRecognizer
 	public class GestureController : MonoBehaviour
 	{
 		[Header ("Gesture Prefab")]
-		public Transform gestureOnScreenPrefab;
+		[SerializeField] private Transform gestureOnScreenPrefab;
 
-		[Header ("Player Controller")]
-		public PlayerController playerController;
-
+		private PlayerController playerController;
 		private List<Gesture> trainingSet = new List<Gesture>();
 		private List<Point> points = new List<Point>();
 		private int strokeId = -1;
@@ -24,12 +22,13 @@ namespace PDollarGestureRecognizer
 
 		void Start()
 		{
+			playerController = GetComponent<PlayerController>();
+
 			drawArea = new Rect(0, 0, Screen.width, Screen.height);
 
 			TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("GestureSet/10-stylus-MEDIUM/");
 			foreach (TextAsset gestureXml in gesturesXml)
 			trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
-
 		}
 
 		void Update()

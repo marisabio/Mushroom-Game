@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private NavMeshAgent agent;
     private Vector2 tapPoint;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -23,7 +22,6 @@ public class PlayerController : MonoBehaviour
         EnableCharacterControl();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!drawMode)
