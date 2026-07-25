@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System;
 
 namespace PDollarGestureRecognizer
 {
@@ -8,6 +9,10 @@ namespace PDollarGestureRecognizer
 	{
 		[Header ("Gesture Prefab")]
 		[SerializeField] private Transform gestureOnScreenPrefab;
+
+		[Header ("Public Gesture Results")]
+		public String finalGestureResult;
+		public float finalGestureScore;
 
 		private PlayerController playerController;
 		private List<Gesture> trainingSet = new List<Gesture>();
@@ -83,6 +88,9 @@ namespace PDollarGestureRecognizer
 
 					Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
 
+					finalGestureResult = gestureResult.GestureClass;
+					finalGestureScore = gestureResult.Score;
+
 					points.Clear();
 
 						foreach (LineRenderer lineRenderer in gestureLinesRenderer)
@@ -93,7 +101,7 @@ namespace PDollarGestureRecognizer
 
 					gestureLinesRenderer.Clear();
 
-					playerController.drawMode = false;
+					playerController.DisableDrawMode();
 				}
 			}
 		}
