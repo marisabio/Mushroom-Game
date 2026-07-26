@@ -213,21 +213,21 @@ MonoBehaviour:
       m_Action: Secondary Mouse
       m_Flags: 0
     m_Flags: 0
-  enterDrawMode:
-    m_Name: Enter Draw Mode
+  interactAction:
+    m_Name: Interact
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 28b9f087-dd45-4745-8bb1-7fc4c515a02f
+    m_Id: 480cb588-a7a2-4c67-b30d-d5afa2f5203b
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 47ae0144-a366-4732-8a69-97948949ae4b
+      m_Id: b9ce596d-d832-468a-a1e1-7d1491265f65
       m_Path: <Keyboard>/e
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Enter Draw Mode
+      m_Action: Interact
       m_Flags: 0
     m_Flags: 0
   drawMode: 0
@@ -244,4 +244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PDollarGestureRecognizer.GestureController
   gestureOnScreenPrefab: {fileID: 400000, guid: 971129baafd304455a111daa5207b8a1, type: 3}
-  playerController: {fileID: 3383215686954786635}
+  finalGestureResult: 
+  finalGestureScore: 0
+  isDrawModeOn: 0
+  isCheckingResult: 0
+  waitResultTime: 0.2

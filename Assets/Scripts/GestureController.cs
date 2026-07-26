@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace PDollarGestureRecognizer
 {
@@ -11,8 +12,13 @@ namespace PDollarGestureRecognizer
 		[SerializeField] private Transform gestureOnScreenPrefab;
 
 		[Header ("Public Gesture Results")]
-		public String finalGestureResult;
+		public string finalGestureResult;
 		public float finalGestureScore;
+		
+		[Header ("Gesture State")]
+		public bool isDrawModeOn;
+		public bool isCheckingResult;
+		public float waitResultTime;
 
 		private PlayerController playerController;
 		private List<Gesture> trainingSet = new List<Gesture>();
@@ -23,7 +29,8 @@ namespace PDollarGestureRecognizer
 		private int vertexCount = 0;
 		private List<LineRenderer> gestureLinesRenderer = new List<LineRenderer>();
 		private LineRenderer currentGestureLineRenderer;
-		private bool recognized;
+		private bool isRecognized;
+		
 
 		void Start()
 		{
@@ -38,7 +45,9 @@ namespace PDollarGestureRecognizer
 
 		void Update()
 		{
-			if (playerController.drawMode == true)
+			isDrawModeOn = playerController.drawMode;
+
+			if (isDrawModeOn)
 			{
 				GestureRecognizer();
 			}
@@ -55,9 +64,9 @@ namespace PDollarGestureRecognizer
 			{
 				if (playerController.primaryMouseAction.WasPressedThisFrame())
 				{
-					if (recognized)
+					if (isRecognized)
 					{
-						recognized = false;
+						isRecognized = false;
 						strokeId = -1;
 					}
 
@@ -81,7 +90,8 @@ namespace PDollarGestureRecognizer
 
 				if (playerController.secondaryMouseAction.WasPressedThisFrame())
 				{	
-					recognized = true;
+					isCheckingResult = true;
+					isRecognized = true;
 
 					Gesture candidate = new Gesture(points.ToArray());
 					Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
@@ -102,8 +112,15 @@ namespace PDollarGestureRecognizer
 					gestureLinesRenderer.Clear();
 
 					playerController.DisableDrawMode();
+					StartCoroutine("FinalResultTimer");
 				}
 			}
+		}
+
+		private IEnumerator FinalResultTimer()
+		{
+			yield return new WaitForSeconds(waitResultTime);
+			isCheckingResult = false;
 		}
 	}
 }

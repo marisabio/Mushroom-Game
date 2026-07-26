@@ -1,16 +1,23 @@
 using System;
 using PDollarGestureRecognizer;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GestureResultChecker : MonoBehaviour
 {
     [Header ("Expected Gesture Result")]
-    [SerializeField] private String gestureName;
+    [SerializeField] private string gestureName;
     [SerializeField] private float gesturePrecision;
 
     [Header ("Player Gesture Controller")]
     [SerializeField] private GestureController gestureController;
 
+    [Header ("Draw Mode Event")]
+    [SerializeField] private UnityEvent startDrawMode;
+    [SerializeField] private UnityEvent checkGestureResult;
+    [SerializeField] private UnityEvent onResultMatch;
+
+    private bool isResultBeingChecked;
     private InteractableController interactableController;
 
     void Start()
@@ -20,21 +27,41 @@ public class GestureResultChecker : MonoBehaviour
 
     void Update()
     {
-        if (gestureController.finalGestureResult == gestureName && gestureController.finalGestureScore >= gesturePrecision)
+        if (gestureController.isDrawModeOn && isResultBeingChecked)
         {
-            Debug.Log("Result matched!");
-
-            gestureController.finalGestureResult = null;
-            gestureController.finalGestureScore = 0;
-            
-            gameObject.tag = "Untagged";
-
-            Destroy(interactableController);
-            Destroy(this);
+            checkGestureResult.Invoke();
         }
-        else
+    }
+
+    public void StartDrawModeOnGestureChecker()
+    {
+        startDrawMode.Invoke();
+        isResultBeingChecked = true;
+    }
+
+    public void CheckFinalGestureResult()
+    {
+        if (gestureController.isCheckingResult)
         {
-            // Debug.Log("Wrong gesture :c");
+            if (gestureController.finalGestureResult == gestureName && gestureController.finalGestureScore >= gesturePrecision)
+            {
+                Debug.Log("Result matched!");
+
+                gestureController.finalGestureResult = null;
+                gestureController.finalGestureScore = 0;
+                
+                gameObject.tag = "Untagged";
+                isResultBeingChecked = false;
+                onResultMatch.Invoke();
+
+                Destroy(interactableController);
+                Destroy(this);
+            }
+            else
+            {
+                Debug.Log("Wrong gesture :c");
+                isResultBeingChecked = false;
+            }
         }
     }
 }
