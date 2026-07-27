@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -11,17 +12,21 @@ public class PlayerController : MonoBehaviour
 
     [Header ("Gameplay Mode")]
     public bool drawMode;
-
+    
     private NavMeshAgent agent;
     private Vector2 tapPoint;
+    private Animator cameraAnimator;
     private bool isInteracting = false;
     private bool canInteract = false;
+
+    void OnEnable()
+    {
+        EnablePlayerInput();
+    }
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-
-        EnablePlayerInput();
     }
 
     void Update()
@@ -83,6 +88,11 @@ public class PlayerController : MonoBehaviour
         primaryMouseAction.Disable();
         secondaryMouseAction.Disable();
         interactAction.Disable();
+    }
+
+    void OnDisable()
+    {
+        DisablePlayerInput();
     }
 
     private void OnTriggerStay(Collider other)
