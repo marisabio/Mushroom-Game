@@ -38,7 +38,7 @@ namespace PDollarGestureRecognizer
 
 			drawArea = new Rect(0, 0, Screen.width, Screen.height);
 
-			TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("GestureSet/10-stylus-MEDIUM/");
+			TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("GestureSet/");
 			foreach (TextAsset gestureXml in gesturesXml)
 			trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
 		}

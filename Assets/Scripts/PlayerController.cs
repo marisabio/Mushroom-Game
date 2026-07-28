@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     
     private NavMeshAgent agent;
     private Vector2 tapPoint;
-    private Animator cameraAnimator;
     private bool isInteracting = false;
     private bool canInteract = false;
 
