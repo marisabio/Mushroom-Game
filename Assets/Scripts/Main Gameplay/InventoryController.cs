@@ -9,4 +9,9 @@ public class InventoryController : MonoBehaviour
     {
         itemList.Add(item);
     }
+
+    public void RemoveItem(string item)
+    {
+        itemList.Remove(item);
+    }
 }
