@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     [Header ("Gameplay Mode")]
     public bool drawMode;
+    public bool isPointControlEnabled = true;
     
     private NavMeshAgent agent;
     private Vector2 tapPoint;
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hitInfo;
 
-        if (primaryMouseAction.WasPressedThisFrame())
+        if (primaryMouseAction.WasPressedThisFrame() && isPointControlEnabled)
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(tapPoint), out hitInfo))
             {
