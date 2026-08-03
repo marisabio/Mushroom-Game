@@ -8,8 +8,7 @@ public class CameraController : MonoBehaviour
 
     [Header ("Temporary Camera")]
     [SerializeField] private CinemachineCamera tempCamera;
-
-
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Interactable"))

@@ -14,9 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBlenderSettings
   CustomBlends:
   - From: Player Camera
-    To: 
+    To: '**ANY CAMERA**'
     Blend:
       Style: 1
+      Time: 2
+      CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - From: '**ANY CAMERA**'
+    To: Dialogue Camera 1
+    Blend:
+      Style: 0
+      Time: 2
+      CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - From: Dialogue Camera 1
+    To: Dialogue Camera 2
+    Blend:
+      Style: 0
+      Time: 2
+      CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - From: Dialogue Camera 2
+    To: '**ANY CAMERA**'
+    Blend:
+      Style: 0
       Time: 2
       CustomCurve:
         serializedVersion: 2

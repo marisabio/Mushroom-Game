@@ -12,6 +12,7 @@ public class DialogueController : MonoBehaviour
 
     public string[] lines;
     public string[] names;
+    public CinemachineCamera[] cameras;
     
     public float textSpeed;
 
@@ -41,6 +42,7 @@ public class DialogueController : MonoBehaviour
     private IEnumerator TypeLine()
     {
         actorNameText.text = names[index];
+        CameraDialogueOverride(cameras[index]);
         foreach (char c in lines[index].ToCharArray())
         {
             speechText.text += c;
@@ -50,6 +52,8 @@ public class DialogueController : MonoBehaviour
 
     private void NextLine()
     {
+        CameraDialogueDisable(cameras[index]);
+        
         if (index <lines.Length -1)
         {
             index++;
@@ -61,5 +65,15 @@ public class DialogueController : MonoBehaviour
             playerController.isPointControlEnabled = true;
             dialogueBox.SetActive(false);
         }
+    }
+
+    private void CameraDialogueOverride(CinemachineCamera camera)
+    {
+        camera.Priority = 15;
+    }
+
+    private void CameraDialogueDisable(CinemachineCamera camera)
+    {
+        camera.Priority = 0;
     }
 }
