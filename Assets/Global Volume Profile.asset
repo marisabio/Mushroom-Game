@@ -202,7 +202,7 @@ MonoBehaviour:
     m_Value: 1
   PixelResolution:
     m_OverrideState: 1
-    m_Value: {x: 320, y: 256}
+    m_Value: {x: 854, y: 480}
   EnableColorPrecision:
     m_OverrideState: 1
     m_Value: 1
@@ -217,7 +217,7 @@ MonoBehaviour:
     m_Value: 2
   DitherPattern:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 10
   DitherPixelPerfect:
     m_OverrideState: 1
     m_Value: 1
@@ -247,7 +247,7 @@ MonoBehaviour:
     m_Value: 1
   FogColor:
     m_OverrideState: 1
-    m_Value: {r: 0.2, g: 0.17081349, b: 0.1254902, a: 1}
+    m_Value: {r: 0.5, g: 0.4070258, b: 0.2476415, a: 1}
   FogDensity:
     m_OverrideState: 1
     m_Value: 0.04

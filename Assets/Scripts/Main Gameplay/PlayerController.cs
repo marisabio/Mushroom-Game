@@ -1,4 +1,3 @@
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool drawMode;
     public bool isPointControlEnabled = true;
     
-    private NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
     private Vector2 tapPoint;
     private bool isInteracting = false;
     private bool canInteract = false;

@@ -1,4 +1,3 @@
-using System;
 using PDollarGestureRecognizer;
 using UnityEngine;
 using UnityEngine.Events;
