@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
 
             if (isInteracting)
             {
+                agent.ResetPath();
                 other.GetComponent<InteractableController>().Interact();
                 isInteracting = false;
             }

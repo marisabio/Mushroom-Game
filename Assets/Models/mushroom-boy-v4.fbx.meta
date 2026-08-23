@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6cd5e41585182e942a298d6876108195
+guid: 1ac99513bf68aa947a1231bddea78b53
 ModelImporter:
   serializedVersion: 24300
   internalIDToNameTable: []
@@ -123,7 +123,7 @@ ModelImporter:
       takeName: Waving Wand
       internalID: -1028170021904591997
       firstFrame: 0
-      lastFrame: 78
+      lastFrame: 89
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

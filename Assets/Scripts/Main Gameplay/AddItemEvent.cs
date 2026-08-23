@@ -5,8 +5,9 @@ public class AddItemEvent : MonoBehaviour
     [Header ("Inventory Controller")]
     [SerializeField] private InventoryController inventoryController;
 
-    [Header ("Item Name")]
+    [Header ("Item Settings")]
     [SerializeField] private string itemName;
+    [SerializeField] private float itemDestroyTimer = 1f;
 
     private InteractableController interactableController;
     private MeshRenderer meshRenderer;
@@ -23,6 +24,11 @@ public class AddItemEvent : MonoBehaviour
 
         gameObject.tag = "Untagged";
 
+        Invoke(nameof(DestroyItem), itemDestroyTimer);
+    }
+
+    private void DestroyItem()
+    {
         Destroy(meshRenderer);
         Destroy(interactableController);
         Destroy(this);
