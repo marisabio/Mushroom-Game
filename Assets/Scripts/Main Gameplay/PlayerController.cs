@@ -8,12 +8,13 @@ public class PlayerController : MonoBehaviour
     public InputAction primaryMouseAction;
     public InputAction secondaryMouseAction;
     public InputAction interactAction;
+    public InputAction pauseAction;
 
     [Header ("Gameplay Mode")]
     public bool drawMode;
-    public bool isPointControlEnabled = true;
     
     [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public bool isPausing = false;
     private Vector2 tapPoint;
     private bool isInteracting = false;
     private bool canInteract = false;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         PointControl();
         InteractControl();
+        PauseControl();
     }
 
     private void PointControl()
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hitInfo;
 
-        if (primaryMouseAction.WasPressedThisFrame() && isPointControlEnabled)
+        if (primaryMouseAction.WasPressedThisFrame())
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(tapPoint), out hitInfo))
             {
@@ -62,6 +64,18 @@ public class PlayerController : MonoBehaviour
         if (interactAction.WasPressedThisFrame() && canInteract)
         {
             isInteracting = true;
+        }
+    }
+
+    private void PauseControl()
+    {
+        if (pauseAction.WasPressedThisFrame() && !isPausing)
+        {
+            isPausing = true;
+        }
+        else if (pauseAction.WasPressedThisFrame() && isPausing)
+        {
+            isPausing = false;
         }
     }
 
@@ -80,6 +94,7 @@ public class PlayerController : MonoBehaviour
         primaryMouseAction.Enable();
         secondaryMouseAction.Enable();
         interactAction.Enable();
+        pauseAction.Enable();
     }
 
     public void DisablePlayerInput()
@@ -87,6 +102,18 @@ public class PlayerController : MonoBehaviour
         primaryMouseAction.Disable();
         secondaryMouseAction.Disable();
         interactAction.Disable();
+    }
+
+    public void EnableMouseInput()
+    {
+        primaryMouseAction.Enable();
+        secondaryMouseAction.Enable();
+    }
+
+    public void DisableMouseInput()
+    {
+        primaryMouseAction.Disable();
+        secondaryMouseAction.Disable();
     }
 
     void OnDisable()

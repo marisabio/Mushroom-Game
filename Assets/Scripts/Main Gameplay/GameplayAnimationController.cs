@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameplayAnimationController : MonoBehaviour
@@ -50,20 +51,21 @@ public class GameplayAnimationController : MonoBehaviour
         {
             animator.SetBool("isTakingItem", true);
             animator.Play("Taking Item");
-            Invoke(nameof(TakingItemAnimationTimer), takingItemTime);
+            StartCoroutine(TakingItemAnimationTimer());
             itemCount = inventoryController.itemList.Count;
         }
-        else
+        else if (itemCount == currentItemCount)
         {
             animator.SetBool("isTakingItem", false);
-            playerController.isPointControlEnabled = true;
         }
 
     }
 
-    private void TakingItemAnimationTimer()
+    private IEnumerator TakingItemAnimationTimer()
     { 
-        playerController.isPointControlEnabled = false;
+        playerController.DisableMouseInput();
+        yield return new WaitForSeconds(takingItemTime);
+        playerController.EnableMouseInput();
     }
 
     private void WavingWandAnimation()
@@ -77,6 +79,5 @@ public class GameplayAnimationController : MonoBehaviour
             animator.SetBool("isWaving", false);
         }
     }
-
 
 }

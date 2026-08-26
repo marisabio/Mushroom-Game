@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
-    public GameObject dialogueBox;
-    public TextMeshProUGUI speechText;
-    public TextMeshProUGUI actorNameText;
-    public PlayerController playerController;
+    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private TextMeshProUGUI speechText;
+    [SerializeField] private TextMeshProUGUI actorNameText;
+    [SerializeField] private PlayerController playerController;
 
-    public string[] lines;
-    public string[] names;
-    public CinemachineCamera[] cameras;
+    [SerializeField] private string[] lines;
+    [SerializeField] private string[] names;
+    [SerializeField] private CinemachineCamera[] cameras;
     
     public float textSpeed;
 
@@ -23,7 +23,8 @@ public class DialogueController : MonoBehaviour
         if (!dialogueBox.activeSelf)
         {
             dialogueBox.SetActive(true);
-            playerController.isPointControlEnabled = false;
+            playerController.DisableMouseInput();
+            playerController.gameObject.transform.LookAt(gameObject.transform);
             speechText.text = string.Empty;
             index = 0;
             StartCoroutine(TypeLine());
@@ -62,7 +63,7 @@ public class DialogueController : MonoBehaviour
         }
         else
         {
-            playerController.isPointControlEnabled = true;
+            playerController.EnableMouseInput();
             dialogueBox.SetActive(false);
         }
     }
