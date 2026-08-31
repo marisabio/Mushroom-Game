@@ -174,8 +174,26 @@ MonoBehaviour:
       m_Action: Interact
       m_Flags: 0
     m_Flags: 0
+  pauseAction:
+    m_Name: Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e81fb2e1-3632-4b1f-a655-7164ae936da0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a9786ea8-9f19-40c6-af53-dda79040a74f
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
+    m_Flags: 0
   drawMode: 0
   agent: {fileID: 0}
+  isPausing: 0
 --- !u!114 &8295314712651891418
 MonoBehaviour:
   m_ObjectHideFlags: 0
