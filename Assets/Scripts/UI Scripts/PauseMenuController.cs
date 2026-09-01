@@ -5,6 +5,7 @@ public class PauseMenuController : MonoBehaviour
 {
     [Header ("Player Controller")]
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private InventoryController inventoryController;
 
     [Header ("Pause Menu Stuff")]
     [SerializeField] private GameObject pauseOverlay;
@@ -13,14 +14,15 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private float pauseFadeMultiplier;
 
     private Image pauseOverlayImage;
+    private bool hasRun = false;
 
     void Start()
     {
         pauseOverlayImage = pauseOverlay.GetComponent<Image>();
         pauseOverlayImage.color = new Color (pauseOverlayImage.color.r, pauseOverlayImage.color.g, pauseOverlayImage.color.b, 0f);
         pauseOverlay.SetActive(true);
-        runeListOverlay.SetActive(false);
-        itemListOverlay.SetActive(false);
+        runeListOverlay.SetActive(true);
+        itemListOverlay.SetActive(true);
     }
 
     void Update()
@@ -34,9 +36,8 @@ public class PauseMenuController : MonoBehaviour
         {
             Time.timeScale = 0;
             playerController.DisablePlayerInput();
-            runeListOverlay.SetActive(true);
-            itemListOverlay.SetActive(true);
 
+            ShowInventoryItems();
             FadeIn();
             
         }
@@ -44,9 +45,8 @@ public class PauseMenuController : MonoBehaviour
         {
             Time.timeScale = 1;
             playerController.EnablePlayerInput();
-            runeListOverlay.SetActive(false);
-            itemListOverlay.SetActive(false);
 
+            DisableInventoryItems();
             FadeOut();            
         }
     }
@@ -65,6 +65,45 @@ public class PauseMenuController : MonoBehaviour
         if (pauseOverlayImage.color.a > 0f)
         {
             pauseOverlayImage.color = new Color (pauseOverlayImage.color.r, pauseOverlayImage.color.g, pauseOverlayImage.color.b, pauseOverlayImage.color.a - 0.1f * pauseFadeMultiplier * Time.unscaledDeltaTime);
+        }
+
+    }
+
+    void ShowInventoryItems()
+    {
+        if (!hasRun)
+        {
+            foreach (Transform item in transform.GetComponentsInChildren<Transform>(true))
+            {
+                Debug.Log(item.name);
+
+                if ((inventoryController.itemList.Contains(item.name) && item.CompareTag("Item")) || (inventoryController.runeList.Contains(item.name) && item.CompareTag("Rune")))
+                {
+                    item.gameObject.SetActive(true); 
+                }
+
+            }
+
+            hasRun = true;
+        }
+    }
+
+    void DisableInventoryItems()
+    {
+        if (hasRun)
+        {
+            foreach (Transform item in transform.GetComponentsInChildren<Transform>(true))
+            {
+                Debug.Log(item.name);
+
+                if ((inventoryController.itemList.Contains(item.name) && item.CompareTag("Item")) || (inventoryController.runeList.Contains(item.name) && item.CompareTag("Rune")))
+                {
+                    item.gameObject.SetActive(false); 
+                }
+
+            }
+
+            hasRun = false;
         }
 
     }

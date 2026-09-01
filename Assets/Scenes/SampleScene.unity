@@ -207,11 +207,11 @@ GameObject:
   - component: {fileID: 197466056}
   m_Layer: 5
   m_Name: Fruit
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &197466055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -226,10 +226,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1697889097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -430}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &197466056
 MonoBehaviour:
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   inventoryController: {fileID: 2116702835}
-  itemName: Teste 2!
+  itemName: Fruit
   itemDestroyTimer: 1
 --- !u!114 &415395793
 MonoBehaviour:
@@ -1639,11 +1639,11 @@ GameObject:
   - component: {fileID: 724774464}
   m_Layer: 5
   m_Name: Glasses
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &724774463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1658,10 +1658,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1697889097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -430}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &724774464
 MonoBehaviour:
@@ -1977,11 +1977,11 @@ GameObject:
   - component: {fileID: 1036790038}
   m_Layer: 5
   m_Name: Air
-  m_TagString: Untagged
+  m_TagString: Rune
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1036790037
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1996,10 +1996,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1190766365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -500}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1036790038
 MonoBehaviour:
@@ -2424,11 +2424,11 @@ GameObject:
   - component: {fileID: 1172124446}
   m_Layer: 5
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Rune
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1172124445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2443,10 +2443,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1190766365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -625}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172124446
 MonoBehaviour:
@@ -2498,7 +2498,6 @@ GameObject:
   - component: {fileID: 1190766368}
   - component: {fileID: 1190766367}
   - component: {fileID: 1190766366}
-  - component: {fileID: 1190766369}
   m_Layer: 5
   m_Name: RuneList
   m_TagString: Untagged
@@ -2591,20 +2590,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190766364}
   m_CullTransparentMesh: 1
---- !u!114 &1190766369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190766364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347f14bc07a0dd7f9a88c7f0392d94c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryMenuController
-  inventoryController: {fileID: 2116702835}
-  playerController: {fileID: 2116702823}
 --- !u!1 &1192156975
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,11 +2603,11 @@ GameObject:
   - component: {fileID: 1192156977}
   m_Layer: 5
   m_Name: Lever
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1192156976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2637,10 +2622,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1697889097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -555}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1192156977
 MonoBehaviour:
@@ -2832,11 +2817,11 @@ GameObject:
   - component: {fileID: 1417013096}
   m_Layer: 5
   m_Name: Earth
-  m_TagString: Untagged
+  m_TagString: Rune
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1417013095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2851,10 +2836,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1190766365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -875}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417013096
 MonoBehaviour:
@@ -3484,7 +3469,6 @@ GameObject:
   - component: {fileID: 1697889100}
   - component: {fileID: 1697889099}
   - component: {fileID: 1697889098}
-  - component: {fileID: 1697889101}
   m_Layer: 5
   m_Name: ItemList
   m_TagString: Untagged
@@ -3576,20 +3560,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697889096}
   m_CullTransparentMesh: 1
---- !u!114 &1697889101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697889096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347f14bc07a0dd7f9a88c7f0392d94c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryMenuController
-  inventoryController: {fileID: 2116702835}
-  playerController: {fileID: 2116702823}
 --- !u!1 &1790843265
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,9 +3612,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
   playerController: {fileID: 2116702823}
+  inventoryController: {fileID: 2116702835}
   pauseOverlay: {fileID: 916926588}
-  RuneListOverlay: {fileID: 1190766364}
-  ItemListOverlay: {fileID: 1697889096}
+  runeListOverlay: {fileID: 1190766364}
+  itemListOverlay: {fileID: 1697889096}
   pauseFadeMultiplier: 3.5
 --- !u!1 &1810828139
 GameObject:
@@ -4054,11 +4025,11 @@ GameObject:
   - component: {fileID: 2007867659}
   m_Layer: 5
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Rune
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2007867658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4073,10 +4044,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1190766365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -750}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007867659
 MonoBehaviour:
