@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -19,6 +20,10 @@ namespace PDollarGestureRecognizer
 		public bool isCheckingResult;
 		public float waitResultTime;
 
+		[Header ("Overlay State")]
+		[SerializeField] private GameObject pauseOverlay;
+		[SerializeField] private float pauseFadeMultiplier;
+
 		private PlayerController playerController;
 		private List<Gesture> trainingSet = new List<Gesture>();
 		private List<Point> points = new List<Point>();
@@ -29,11 +34,13 @@ namespace PDollarGestureRecognizer
 		private List<LineRenderer> gestureLinesRenderer = new List<LineRenderer>();
 		private LineRenderer currentGestureLineRenderer;
 		private bool isRecognized;
+		private Image pauseOverlayImage;
 		
 
 		void Start()
 		{
 			playerController = GetComponent<PlayerController>();
+			pauseOverlayImage = pauseOverlay.GetComponent<Image>();
 
 			drawArea = new Rect(0, 0, Screen.width, Screen.height);
 
@@ -48,6 +55,7 @@ namespace PDollarGestureRecognizer
 
 			if (isDrawModeOn)
 			{
+				FadeIn();
 				GestureRecognizer();
 			}
 		}
@@ -109,6 +117,7 @@ namespace PDollarGestureRecognizer
 						}
 
 					gestureLinesRenderer.Clear();
+					FadeOut();
 
 					playerController.DisableDrawMode();
 					StartCoroutine("FinalResultTimer");
@@ -121,5 +130,22 @@ namespace PDollarGestureRecognizer
 			yield return new WaitForSeconds(waitResultTime);
 			isCheckingResult = false;
 		}
+
+		private void FadeIn()
+		{
+			if (pauseOverlayImage.color.a < 0.35f)
+			{
+				pauseOverlayImage.color = new Color (pauseOverlayImage.color.r, pauseOverlayImage.color.g, pauseOverlayImage.color.b, pauseOverlayImage.color.a + 0.1f * pauseFadeMultiplier * Time.unscaledDeltaTime);
+			}
+		}
+
+		private void FadeOut()
+		{
+			if (pauseOverlayImage.color.a > 0f)
+			{
+				pauseOverlayImage.color = new Color (pauseOverlayImage.color.r, pauseOverlayImage.color.g, pauseOverlayImage.color.b, pauseOverlayImage.color.a - 0.1f * pauseFadeMultiplier * Time.unscaledDeltaTime);
+			}
+		}
+
 	}
 }

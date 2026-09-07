@@ -43,7 +43,7 @@ public class PauseMenuController : MonoBehaviour
             FadeIn();
             
         }
-        else if (!playerController.isPausing)
+        else if (!playerController.isPausing && !playerController.drawMode)
         {
             Time.timeScale = 1;
             playerController.EnablePlayerInput();

@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0dad40db36b255a9bca07f6f67b7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GestureResultChecker
-  gestureName: Fire
+  gestureName: Water
   gesturePrecision: 0.75
   gestureController: {fileID: 2116702822}
   inventoryController: {fileID: 2116702835}
@@ -5332,6 +5332,18 @@ PrefabInstance:
       propertyPath: 'runeList.Array.data[0]'
       value: Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 8295314712651891418, guid: dcca9e6507743359a868fb9c484b1438, type: 3}
+      propertyPath: pauseOverlay
+      value: 
+      objectReference: {fileID: 916926588}
+    - target: {fileID: 8295314712651891418, guid: dcca9e6507743359a868fb9c484b1438, type: 3}
+      propertyPath: pauseFadeMultiplier
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295314712651891418, guid: dcca9e6507743359a868fb9c484b1438, type: 3}
+      propertyPath: pauseMenuController
+      value: 
+      objectReference: {fileID: 1790843267}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
