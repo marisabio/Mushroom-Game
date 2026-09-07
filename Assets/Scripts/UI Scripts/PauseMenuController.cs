@@ -11,6 +11,7 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private GameObject pauseOverlay;
     [SerializeField] private GameObject runeListOverlay;
     [SerializeField] private GameObject itemListOverlay;
+    [SerializeField] private GameObject exitOptionsButton;
     [SerializeField] private float pauseFadeMultiplier;
 
     private Image pauseOverlayImage;
@@ -36,6 +37,7 @@ public class PauseMenuController : MonoBehaviour
         {
             Time.timeScale = 0;
             playerController.DisablePlayerInput();
+            exitOptionsButton.SetActive(true);
 
             ShowInventoryItems();
             FadeIn();
@@ -45,6 +47,7 @@ public class PauseMenuController : MonoBehaviour
         {
             Time.timeScale = 1;
             playerController.EnablePlayerInput();
+            exitOptionsButton.SetActive(false);
 
             DisableInventoryItems();
             FadeOut();            
@@ -69,7 +72,7 @@ public class PauseMenuController : MonoBehaviour
 
     }
 
-    void ShowInventoryItems()
+    private void ShowInventoryItems()
     {
         if (!hasRun)
         {
@@ -88,7 +91,7 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
-    void DisableInventoryItems()
+    private void DisableInventoryItems()
     {
         if (hasRun)
         {
@@ -106,5 +109,10 @@ public class PauseMenuController : MonoBehaviour
             hasRun = false;
         }
 
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

@@ -8,13 +8,15 @@ public class GestureResultChecker : MonoBehaviour
     [SerializeField] private string gestureName;
     [SerializeField] private float gesturePrecision;
 
-    [Header ("Player Gesture Controller")]
+    [Header ("Player Controllers")]
     [SerializeField] private GestureController gestureController;
+    [SerializeField] private InventoryController inventoryController;
 
     [Header ("Draw Mode Event")]
     [SerializeField] private UnityEvent startDrawMode;
     [SerializeField] private UnityEvent checkGestureResult;
     [SerializeField] private UnityEvent onResultMatch;
+    [SerializeField] private UnityEvent onNoMatch;
 
     private bool isResultBeingChecked;
     private InteractableController interactableController;
@@ -34,8 +36,12 @@ public class GestureResultChecker : MonoBehaviour
 
     public void StartDrawModeOnGestureChecker()
     {
-        startDrawMode.Invoke();
-        isResultBeingChecked = true;
+        if (inventoryController.runeList.Contains(gestureName))
+        {
+            startDrawMode.Invoke();
+            isResultBeingChecked = true;
+        }
+        
     }
 
     public void CheckFinalGestureResult()
@@ -60,6 +66,7 @@ public class GestureResultChecker : MonoBehaviour
             {
                 Debug.Log("Wrong gesture :c");
                 isResultBeingChecked = false;
+                onNoMatch.Invoke();
             }
         }
     }
