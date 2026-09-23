@@ -39,6 +39,7 @@ public class GameplayAnimationController : MonoBehaviour
                 {
                     animator.SetBool("isWalking", false);
                 }
+
             }
         }
     }
