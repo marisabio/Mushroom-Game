@@ -33,13 +33,13 @@ public class GameplayAnimationController : MonoBehaviour
         if (!playerController.agent.pathPending)
         {
             animator.SetBool("isWalking", true);
+            
             if (playerController.agent.remainingDistance <= playerController.agent.stoppingDistance)
             {
-                if (!playerController.agent.hasPath || playerController.agent.velocity.sqrMagnitude == 0f)
+                if (!playerController.agent.hasPath || playerController.agent.velocity.sqrMagnitude == 0f || playerController.agent.isPathStale)
                 {
                     animator.SetBool("isWalking", false);
                 }
-
             }
         }
     }

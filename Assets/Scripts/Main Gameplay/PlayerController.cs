@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
         {
             CharacterControl();
         }
+
+        Debug.Log(agent.remainingDistance);
+        Debug.Log(agent.pathStatus);
     }
 
     private void CharacterControl()
