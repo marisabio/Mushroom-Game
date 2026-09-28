@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
+    [Header ("Dialogue Elements")]
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI speechText;
     [SerializeField] private TextMeshProUGUI actorNameText;
     [SerializeField] private PlayerController playerController;
 
+    [Header ("Dialogue Shots")]
     [SerializeField] private string[] lines;
     [SerializeField] private string[] names;
     [SerializeField] private CinemachineCamera[] cameras;

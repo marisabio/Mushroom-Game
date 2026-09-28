@@ -40,7 +40,7 @@ public class PauseMenuController : MonoBehaviour
             exitOptionsButton.SetActive(true);
 
             ShowInventoryItems();
-            FadeIn();
+            PauseFadeIn();
             
         }
         else if (!playerController.isPausing && !playerController.drawMode)
@@ -50,11 +50,11 @@ public class PauseMenuController : MonoBehaviour
             exitOptionsButton.SetActive(false);
 
             DisableInventoryItems();
-            FadeOut();            
+            PauseFadeOut();            
         }
     }
 
-    private void FadeIn()
+    private void PauseFadeIn()
     {
         if (pauseOverlayImage.color.a < 0.35f)
         {
@@ -63,7 +63,7 @@ public class PauseMenuController : MonoBehaviour
 
     }
 
-    private void FadeOut()
+    private void PauseFadeOut()
     {
         if (pauseOverlayImage.color.a > 0f)
         {
