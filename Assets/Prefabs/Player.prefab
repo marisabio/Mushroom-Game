@@ -226,10 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678a2abbde2586e81b6f5141681443fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  itemList:
-  - Glasses
-  runeList:
-  - Fire
+  itemList: []
+  runeList: []
 --- !u!114 &937983557979919679
 MonoBehaviour:
   m_ObjectHideFlags: 0

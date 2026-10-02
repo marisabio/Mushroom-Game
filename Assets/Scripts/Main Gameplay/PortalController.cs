@@ -72,7 +72,6 @@ public class PortalController : MonoBehaviour
         if (portalOverlayImage.color.a <= 0f)
         {
             newScene = false;
-            Debug.Log(newScene);
         }
         
     }
