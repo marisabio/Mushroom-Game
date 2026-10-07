@@ -78,8 +78,6 @@ public class PauseMenuController : MonoBehaviour
         {
             foreach (Transform item in transform.GetComponentsInChildren<Transform>(true))
             {
-                Debug.Log(item.name);
-
                 if ((inventoryController.itemList.Contains(item.name) && item.CompareTag("Item")) || (inventoryController.runeList.Contains(item.name) && item.CompareTag("Rune")))
                 {
                     item.gameObject.SetActive(true); 
@@ -97,8 +95,6 @@ public class PauseMenuController : MonoBehaviour
         {
             foreach (Transform item in transform.GetComponentsInChildren<Transform>(true))
             {
-                Debug.Log(item.name);
-
                 if ((inventoryController.itemList.Contains(item.name) && item.CompareTag("Item")) || (inventoryController.runeList.Contains(item.name) && item.CompareTag("Rune")))
                 {
                     item.gameObject.SetActive(false); 

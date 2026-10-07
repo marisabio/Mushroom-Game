@@ -2,13 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PortalController : MonoBehaviour
+public class PortalController : MonoBehaviour, IDataPersistance
 {
     [SerializeField] int levelIndex;
     [SerializeField] private GameObject portalOverlay;
     [SerializeField] private float portalFadeMultiplier;
 
     private Image portalOverlayImage;
+    private int currentScene;
+    private Scene scene;
     private bool newScene;
     private bool beginSceneTransition = false;
     private bool isNextSceneReady = false;
@@ -18,8 +20,22 @@ public class PortalController : MonoBehaviour
         portalOverlayImage = portalOverlay.GetComponent<Image>();
         portalOverlayImage.color = new Color (portalOverlayImage.color.r, portalOverlayImage.color.g, portalOverlayImage.color.b, 1f);
         portalOverlay.SetActive(true);
-
+        
         newScene = true;
+
+        scene = SceneManager.GetActiveScene();
+
+        if (currentScene != scene.buildIndex)
+        {
+            PortalFadeOut();
+
+            if (isNextSceneReady)
+            {
+                SceneManager.LoadSceneAsync(levelIndex);
+            }
+        }
+
+        currentScene = scene.buildIndex;
     }
 
     void Update()
@@ -74,6 +90,16 @@ public class PortalController : MonoBehaviour
             newScene = false;
         }
         
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currentScene = data.currentScene;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.currentScene = this.currentScene;
     }
 
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistance
 {
     [Header ("Input Settings")] 
     public InputAction primaryMouseAction;
@@ -142,6 +142,16 @@ public class PlayerController : MonoBehaviour
         {
             canInteract = false;
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        transform.position = data.playerPosition;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.playerPosition = transform.position;
     }
 
 }

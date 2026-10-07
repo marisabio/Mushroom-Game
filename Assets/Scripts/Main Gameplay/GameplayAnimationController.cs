@@ -24,7 +24,6 @@ public class GameplayAnimationController : MonoBehaviour
     void Update()
     {
         WalkingAnimationState();
-        TakingItemAnimationState();
         WavingWandAnimation();
     }
 
@@ -44,22 +43,11 @@ public class GameplayAnimationController : MonoBehaviour
         }
     }
 
-    private void TakingItemAnimationState()
+    public void TakingItemAnimationState()
     {
-        int currentItemCount = inventoryController.itemList.Count;
-
-        if (itemCount != currentItemCount)
-        {
-            animator.SetBool("isTakingItem", true);
-            animator.Play("Taking Item");
-            StartCoroutine(TakingItemAnimationTimer());
-            itemCount = inventoryController.itemList.Count;
-        }
-        else if (itemCount == currentItemCount)
-        {
-            animator.SetBool("isTakingItem", false);
-        }
-
+        animator.Play("Taking Item");
+        StartCoroutine(TakingItemAnimationTimer());
+        itemCount = inventoryController.itemList.Count;
     }
 
     private IEnumerator TakingItemAnimationTimer()

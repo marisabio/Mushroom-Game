@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class AddItemEvent : MonoBehaviour
+public class ItemController : MonoBehaviour, IDataPersistance
 {
     [Header ("Inventory Controller")]
     [SerializeField] private InventoryController inventoryController;
 
     [Header ("Item Settings")]
     [SerializeField] private string itemName;
+    [SerializeField] private bool isItem;
+    [SerializeField] private bool isRune;
     [SerializeField] private float itemDestroyTimer = 1f;
 
     private InteractableController interactableController;
@@ -43,7 +45,31 @@ public class AddItemEvent : MonoBehaviour
         Destroy(meshRenderer);
         Destroy(interactableController);
         Destroy(sphereCollider);
-        Destroy(this);
     }
+
+    public void LoadData(GameData data)
+    {
+        if (data.itemsCollected.Contains(itemName))
+        {
+            inventoryController.AddItem(itemName);
+            gameObject.tag = "Untagged";
+
+            Destroy(meshRenderer);
+            Destroy(interactableController);
+            Destroy(sphereCollider);
+        }
+
+        if (data.runesCollected.Contains(itemName))
+        {
+            inventoryController.AddRune(itemName);
+            gameObject.tag = "Untagged";
+
+            Destroy(meshRenderer);
+            Destroy(interactableController);
+            Destroy(sphereCollider);
+        }
+    }
+
+    public void SaveData(GameData data) { }
 
 }
