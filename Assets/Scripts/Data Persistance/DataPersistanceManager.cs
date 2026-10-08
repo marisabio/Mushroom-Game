@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -7,7 +8,7 @@ public class DataPersistanceManager : MonoBehaviour
     [Header ("File Storage Config")]
     [SerializeField] private string fileName;
 
-    private GameData gameData;
+    [System.NonSerialized] public GameData gameData;
     private List<IDataPersistance> dataPersistancesObjects;
     public static DataPersistanceManager instance { get; private set; }
     private FileDataHandler dataHandler;
@@ -15,17 +16,23 @@ public class DataPersistanceManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
-    void Start()
+    void OnEnable()
     {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        dataPersistancesObjects = FindAllDataPersistanceObjects();
-        LoadGame();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void NewGame()
     {
+        dataHandler.Delete();
         gameData = new GameData();
     }
 
@@ -42,6 +49,12 @@ public class DataPersistanceManager : MonoBehaviour
         {
             dataPersistanceObject.LoadData(gameData);
         }
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        dataPersistancesObjects = FindAllDataPersistanceObjects();
+        LoadGame();
     }
 
     public void SaveGame()

@@ -10,6 +10,7 @@ public class PortalController : MonoBehaviour, IDataPersistance
 
     private Image portalOverlayImage;
     private int currentScene;
+    private int lastScene;
     private Scene scene;
     private bool newScene;
     private bool beginSceneTransition = false;
@@ -27,6 +28,7 @@ public class PortalController : MonoBehaviour, IDataPersistance
 
         if (currentScene != scene.buildIndex)
         {
+            lastScene = currentScene;
             PortalFadeOut();
 
             if (isNextSceneReady)
@@ -94,12 +96,14 @@ public class PortalController : MonoBehaviour, IDataPersistance
 
     public void LoadData(GameData data)
     {
-        this.currentScene = data.currentScene;
+        currentScene = data.currentScene;
+        lastScene = data.lastScene;
     }
 
     public void SaveData(GameData data)
     {
-        data.currentScene = this.currentScene;
+        data.currentScene = currentScene;
+        data.lastScene = lastScene;
     }
 
 }

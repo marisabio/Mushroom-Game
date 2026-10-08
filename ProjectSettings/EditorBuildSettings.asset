@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Main Menu.unity
+    guid: de3be3b79a4c362e7b2a49b5214c542b
   - enabled: 1
     path: Assets/Scenes/Intro Map.unity
     guid: 6390742a8b3acee848e68fd02fb466d2
   - enabled: 1
     path: Assets/Scenes/Cave Trail Map.unity
     guid: 769138623737b058ba68312929c8245d
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

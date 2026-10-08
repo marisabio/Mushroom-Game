@@ -823,6 +823,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d3215ad506b64ecbf7fd16b3c60ab2, type: 3}
+--- !u!1001 &733658506
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2481380420334541077, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_Name
+      value: Managers
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.82875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.29662
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -42.07107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931355528385026234, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0bc5c5178b03c739f91e3a550093f291, type: 3}
 --- !u!1001 &821019283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -955,6 +1012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AddItemEvent
   inventoryController: {fileID: 1481309053}
   itemName: Wind
+  isItem: 0
+  isRune: 0
   itemDestroyTimer: 1
 --- !u!114 &834151528
 MonoBehaviour:
@@ -3324,6 +3383,7 @@ SceneRoots:
   - {fileID: 1075410336}
   - {fileID: 837689262}
   - {fileID: 77992284}
+  - {fileID: 733658506}
   - {fileID: 1715796357}
   - {fileID: 1047565301}
   - {fileID: 689088419}

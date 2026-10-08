@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemController : MonoBehaviour, IDataPersistance
+public class ItemController : MonoBehaviour
 {
     [Header ("Inventory Controller")]
     [SerializeField] private InventoryController inventoryController;
@@ -20,6 +20,8 @@ public class ItemController : MonoBehaviour, IDataPersistance
         interactableController = GetComponent<InteractableController>();
         meshRenderer = GetComponent<MeshRenderer>();
         sphereCollider = GetComponent<SphereCollider>();
+
+        ItemInInventoryCheck();
     }
 
     public void TakingItem()
@@ -47,11 +49,10 @@ public class ItemController : MonoBehaviour, IDataPersistance
         Destroy(sphereCollider);
     }
 
-    public void LoadData(GameData data)
+    private void ItemInInventoryCheck()
     {
-        if (data.itemsCollected.Contains(itemName))
+        if (inventoryController.itemList.Contains(itemName))
         {
-            inventoryController.AddItem(itemName);
             gameObject.tag = "Untagged";
 
             Destroy(meshRenderer);
@@ -59,9 +60,8 @@ public class ItemController : MonoBehaviour, IDataPersistance
             Destroy(sphereCollider);
         }
 
-        if (data.runesCollected.Contains(itemName))
+        if (inventoryController.runeList.Contains(itemName))
         {
-            inventoryController.AddRune(itemName);
             gameObject.tag = "Untagged";
 
             Destroy(meshRenderer);
@@ -69,7 +69,5 @@ public class ItemController : MonoBehaviour, IDataPersistance
             Destroy(sphereCollider);
         }
     }
-
-    public void SaveData(GameData data) { }
 
 }

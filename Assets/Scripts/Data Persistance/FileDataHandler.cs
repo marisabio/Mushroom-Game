@@ -16,7 +16,6 @@ public class FileDataHandler
     public GameData Load()
     {
         string fullPath = Path.Combine(dataPath, dataFileName);
-        Debug.Log(fullPath);
 
         GameData loadedData = null;
 
@@ -48,7 +47,6 @@ public class FileDataHandler
     public void Save(GameData data)
     {
         string fullPath = Path.Combine(dataPath, dataFileName);
-        Debug.Log(fullPath);
 
         try
         {
@@ -67,6 +65,20 @@ public class FileDataHandler
         catch (Exception e)
         {
             Debug.LogError("Error when saving data to file: " + fullPath + "\n" + e);
+        }
+    }
+
+    public void Delete()
+    {
+        string fullPath = Path.Combine(dataPath, dataFileName);
+
+        try
+        {
+            File.Delete(fullPath);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error when deleting data file: " + fullPath + "\n" + e);
         }
     }
 }
