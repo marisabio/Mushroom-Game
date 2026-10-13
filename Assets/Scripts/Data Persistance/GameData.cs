@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public bool freshStart;
     public int currentScene;
     public int lastScene;
     public Vector3 playerPosition;
@@ -12,6 +13,7 @@ public class GameData
 
     public GameData()
     {
+        freshStart = true;
         currentScene = 0;
         lastScene = 0;
         playerPosition = Vector3.zero;

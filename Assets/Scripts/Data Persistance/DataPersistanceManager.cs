@@ -64,6 +64,11 @@ public class DataPersistanceManager : MonoBehaviour
             dataPersistanceObject.SaveData(gameData);
         }
 
+        if (gameData.freshStart)
+        {
+            gameData.freshStart = false;
+        }
+        
         dataHandler.Save(gameData);
     }
 
