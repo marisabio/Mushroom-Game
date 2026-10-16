@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    [Header ("Main Menu Stuff")]
     [SerializeField] private GameObject NewGameButton;
     [SerializeField] private GameObject YesNewGameButton;
     [SerializeField] private GameObject NoNewGameButton;

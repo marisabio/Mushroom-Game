@@ -5,23 +5,30 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
-    [Header ("Dialogue Elements")]
+    [Header("Dialogue Elements")]
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI speechText;
     [SerializeField] private TextMeshProUGUI actorNameText;
     [SerializeField] private PlayerController playerController;
 
-    [Header ("Dialogue Shots")]
-    [SerializeField] private string[] lines;
-    [SerializeField] private string[] names;
-    [SerializeField] private CinemachineCamera[] cameras;
-    
-    public float textSpeed;
+    [Header("Dialogue Sets")]
+    [SerializeField] private DialogueSet[] dialogueSets;
+    [SerializeField] private int currentIndex;
 
+    public float textSpeed;
     private int index;
+
+    private DialogueLine[] CurrentLine => dialogueSets[currentIndex].lines;
+
+    public void SelectDialogueSet(int index)
+    {
+        currentIndex = index;
+    }
 
     public void StartDialogue()
     {
+        if (dialogueSets == null || dialogueSets.Length == 0) return;
+
         if (!dialogueBox.activeSelf)
         {
             dialogueBox.SetActive(true);
@@ -31,22 +38,24 @@ public class DialogueController : MonoBehaviour
             index = 0;
             StartCoroutine(TypeLine());
         }
-        else if (speechText.text == lines[index])
+        else if (speechText.text == CurrentLine[index].text)
         {
             NextLine();
         }
         else
         {
             StopAllCoroutines();
-            speechText.text = lines[index];
+            speechText.text = CurrentLine[index].text;
         }
     }
 
     private IEnumerator TypeLine()
     {
-        actorNameText.text = names[index];
-        CameraDialogueOverride(cameras[index]);
-        foreach (char c in lines[index].ToCharArray())
+        DialogueLine line = CurrentLine[index];
+        actorNameText.text = line.actor;
+        CameraDialogueOverride(line.camera);
+
+        foreach (char c in line.text)
         {
             speechText.text += c;
             yield return new WaitForSeconds(textSpeed);
@@ -55,9 +64,9 @@ public class DialogueController : MonoBehaviour
 
     private void NextLine()
     {
-        CameraDialogueDisable(cameras[index]);
-        
-        if (index <lines.Length -1)
+        CameraDialogueDisable(CurrentLine[index].camera);
+
+        if (index < CurrentLine.Length - 1)
         {
             index++;
             speechText.text = string.Empty;

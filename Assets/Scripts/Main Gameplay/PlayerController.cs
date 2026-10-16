@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour, IDataPersistance
 
     [Header ("Gameplay Mode")]
     public bool drawMode;
+
+    [Header ("Wand Object")]
+    [SerializeField] private GameObject playerWand;
     
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public bool isPausing = false;
@@ -82,11 +85,13 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     public void EnableDrawMode()
     {
         drawMode = true;
+        playerWand.SetActive(true);
     }
 
     public void DisableDrawMode()
     {
         drawMode = false;
+        playerWand.SetActive(false);
     }
 
     public void EnablePlayerInput()

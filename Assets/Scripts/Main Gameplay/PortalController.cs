@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class PortalController : MonoBehaviour, IDataPersistance
 {
+    [Header ("Portal Settings")]
+    [SerializeField] string label;
     [SerializeField] int levelIndex;
     [SerializeField] private GameObject portalOverlay;
     [SerializeField] private float portalFadeMultiplier;

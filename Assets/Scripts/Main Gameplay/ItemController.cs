@@ -10,15 +10,15 @@ public class ItemController : MonoBehaviour
     [SerializeField] private bool isItem;
     [SerializeField] private bool isRune;
     [SerializeField] private float itemDestroyTimer = 1f;
+    [SerializeField] private GameObject itemObject;
 
     private InteractableController interactableController;
-    private MeshRenderer meshRenderer;
+    
     private SphereCollider sphereCollider;
 
     void Start()
     {
         interactableController = GetComponent<InteractableController>();
-        meshRenderer = GetComponent<MeshRenderer>();
         sphereCollider = GetComponent<SphereCollider>();
 
         ItemInInventoryCheck();
@@ -44,7 +44,7 @@ public class ItemController : MonoBehaviour
 
     private void DestroyItem()
     {
-        Destroy(meshRenderer);
+        Destroy(itemObject);
         Destroy(interactableController);
         Destroy(sphereCollider);
     }
@@ -55,7 +55,7 @@ public class ItemController : MonoBehaviour
         {
             gameObject.tag = "Untagged";
 
-            Destroy(meshRenderer);
+            Destroy(itemObject);
             Destroy(interactableController);
             Destroy(sphereCollider);
         }
@@ -64,7 +64,7 @@ public class ItemController : MonoBehaviour
         {
             gameObject.tag = "Untagged";
 
-            Destroy(meshRenderer);
+            Destroy(itemObject);
             Destroy(interactableController);
             Destroy(sphereCollider);
         }
